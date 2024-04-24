@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.ball{
+			background: red;
+			position: absolute;
+			height: 75px;
+			width: 75px;
+			border-radius: 100px;
+			transition: 2s;
+		}
+	</style>
+</head>
+<body>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<h1 class="score">0</h1>
+	<script type="text/javascript">
+		let score = 0
+		let sc = document.querySelector(".score")
+		let ball = document.querySelectorAll(".ball")
+		let bl = [200, 400, 125, 125, 600, 800, 525, 525]
+		let bt = [75, 30, 225, 500, 125, 80, 275, 550]
+		let bh = [75, 75, 75, 75, 75, 75, 75, 75]
+		let bw = [75, 75, 75, 75, 75, 75, 75, 75]
+		let randmove = function(){
+			let rand = Math.random()*500-250
+			let round = Math.round(rand)
+
+			return round
+		}
+		let randsize = function(){
+			let rand = Math.random()*75-50
+			let round = Math.round(rand)
+
+			return round
+		}
+		let bp = function(num, t, l){
+			ball[num].style.top = t + "px"
+			ball[num].style.left = l + "px"
+		}
+		let bs = function(num, h, w){
+			ball[num].style.height = h + "px"
+			ball[num].style.height = w + "px"
+		}
+		let scr = function(){
+			if (score == 8) {
+				alert("ты победил")
+			} else if (score < 8) {
+				alert("ты проиграл")
+			}
+		}
+		for (let i = 0; i < ball.length; i++) {
+			bp(i, bt[i], bl[i])
+		}
+		for (let i = 0; i < ball.length; i = i+2) {
+			setTimeout(bp, 2000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 2000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 3000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 3000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 4000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 4000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 5000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 5000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 6000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 6000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 7000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 7000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(scr, 8000)
+		}
+		for (let i = 1; i < ball.length; i = i+2) {
+			setTimeout(bp, 2000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 2000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 3000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 3000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 4000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 4000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 5000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 5000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 6000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 6000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(bp, 7000, i, bt[i] + randmove(), bl[i] + randmove())
+			//setTimeout(bs, 7000, i, bh[i] + randsize(), bw[i] + randsize())
+			setTimeout(scr, 8000)
+		}
+		for (let i = 0; i < ball.length; i++){
+			ball[i].onclick = function(){
+				ball[i].style.display = "none"
+				score = score+1
+				sc.innerHTML = score
+			}
+		}
+		</script>
+</body>
+</html>
